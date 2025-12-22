@@ -9,41 +9,41 @@ static void read_string(char* buf, int n) {
 
 static Student read_student() {
     Student s;
-    printf("ËæìÂÖ•ID: ");
+    printf(" ‰»ÎID: ");
     scanf("%d", &s.id);
-    printf("ËæìÂÖ•ÂßìÂêç: ");
+    printf(" ‰»Î–’√˚: ");
     read_string(s.name, 31);
-    printf("ËæìÂÖ•ÂÆøËàç: ");
+    printf(" ‰»ÎÀﬁ…·: ");
     read_string(s.room, 15);
     return s;
 }
 
 static void menu() {
-    printf("\nÂÆøËàçÁÆ°ÁêÜÁ≥ªÁªü\n");
-    printf("1 Ê∑ªÂä†\n");
-    printf("2 Âà†Èô§\n");
-    printf("3 ‰øÆÊîπ\n");
-    printf("4 ÂàóË°®\n");
-    printf("5 Êü•Êâæ\n");
-    printf("6 ÊéíÂ∫è\n");
-    printf("0 ÈÄÄÂá∫\n");
-    printf("ÈÄâÊã©: ");
+    printf("\nÀﬁ…·π‹¿ÌœµÕ≥\n");
+    printf("1 ÃÌº”\n");
+    printf("2 …æ≥˝\n");
+    printf("3 –ﬁ∏ƒ\n");
+    printf("4 ¡–±Ì\n");
+    printf("5 ≤È’“\n");
+    printf("6 ≈≈–Ú\n");
+    printf("0 ÕÀ≥ˆ\n");
+    printf("—°‘Ò: ");
 }
 
 static void menu_search() {
-    printf("\nÊü•ÊâæÁÆóÊ≥ï\n");
-    printf("1 È°∫Â∫èÊü•Êâæ(ÊåâID)\n");
-    printf("2 ‰∫åÂàÜÊü•Êâæ(ÊåâID)\n");
-    printf("3 ÂìàÂ∏åÊü•Êâæ(ÊåâID)\n");
-    printf("ÈÄâÊã©: ");
+    printf("\n≤È’“À„∑®\n");
+    printf("1 À≥–Ú≤È’“(∞¥ID)\n");
+    printf("2 ∂˛∑÷≤È’“(∞¥ID)\n");
+    printf("3 π˛œ£≤È’“(∞¥ID)\n");
+    printf("—°‘Ò: ");
 }
 
 static void menu_sort() {
-    printf("\nÊéíÂ∫èÁÆóÊ≥ï\n");
-    printf("1 ÊèíÂÖ•ÊéíÂ∫è(ÊåâID)\n");
-    printf("2 Âø´ÈÄüÊéíÂ∫è(ÊåâÂßìÂêç)\n");
-    printf("3 ÂÜíÊ≥°ÊéíÂ∫è(ÊåâÂÆøËàç)\n");
-    printf("ÂçáÂ∫èËæìÂÖ•1, ÈôçÂ∫èËæìÂÖ•0: ");
+    printf("\n≈≈–ÚÀ„∑®\n");
+    printf("1 ≤Â»Î≈≈–Ú(∞¥ID)\n");
+    printf("2 øÏÀŸ≈≈–Ú(∞¥–’√˚)\n");
+    printf("3 √∞≈›≈≈–Ú(∞¥Àﬁ…·)\n");
+    printf("…˝–Ú ‰»Î1, Ωµ–Ú ‰»Î0: ");
 }
 
 int main() {
@@ -57,29 +57,29 @@ int main() {
         if (choice == 1) {
             Student s = read_student();
             int ok = list_add(&list, s);
-            printf(ok ? "Â∑≤Ê∑ªÂä†\n" : "IDÈáçÂ§ç, Êú™Ê∑ªÂä†\n");
+            printf(ok ? "“—ÃÌº”\n" : "ID÷ÿ∏¥, Œ¥ÃÌº”\n");
         } else if (choice == 2) {
             int id;
-            printf("ËæìÂÖ•Ë¶ÅÂà†Èô§ÁöÑID: ");
+            printf(" ‰»Î“™…æ≥˝µƒID: ");
             scanf("%d", &id);
             int ok = list_delete_by_id(&list, id);
-            printf(ok ? "Â∑≤Âà†Èô§\n" : "Êú™ÊâæÂà∞\n");
+            printf(ok ? "“—…æ≥˝\n" : "Œ¥’“µΩ\n");
         } else if (choice == 3) {
             Student s = read_student();
             int ok = list_update_by_id(&list, s);
-            printf(ok ? "Â∑≤‰øÆÊîπ\n" : "Êú™ÊâæÂà∞\n");
+            printf(ok ? "“—–ﬁ∏ƒ\n" : "Œ¥’“µΩ\n");
         } else if (choice == 4) {
             list_print(&list);
         } else if (choice == 5) {
             menu_search();
             int alg; scanf("%d", &alg);
-            int id; printf("ËæìÂÖ•Ë¶ÅÊü•ÊâæÁöÑID: "); scanf("%d", &id);
+            int id; printf(" ‰»Î“™≤È’“µƒID: "); scanf("%d", &id);
             int idx = -1;
             if (alg == 1) idx = search_linear_by_id(&list, id);
             else if (alg == 2) idx = search_binary_by_id(&list, id);
             else if (alg == 3) idx = search_hash_by_id(&list, id);
-            if (idx >= 0) printf("ÊâæÂà∞: %d %s %s\n", list.data[idx].id, list.data[idx].name, list.data[idx].room);
-            else printf("Êú™ÊâæÂà∞\n");
+            if (idx >= 0) printf("’“µΩ: %d %s %s\n", list.data[idx].id, list.data[idx].name, list.data[idx].room);
+            else printf("Œ¥’“µΩ\n");
         } else if (choice == 6) {
             menu_sort();
             int alg; scanf("%d", &alg);
@@ -87,7 +87,7 @@ int main() {
             if (alg == 1) sort_insertion_by_id(&list, asc);
             else if (alg == 2) sort_quick_by_name(&list, asc);
             else if (alg == 3) sort_bubble_by_room(&list, asc);
-            printf("Â∑≤ÊéíÂ∫è\n");
+            printf("“—≈≈–Ú\n");
         }
     }
     list_free(&list);
